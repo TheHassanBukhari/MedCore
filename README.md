@@ -57,11 +57,11 @@ MedCore-Hospital-Management/
 ### 1. Clone Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/TheHassanBukhari/MedCore-Hospital-Management.git
 cd MedCore-Hospital-Management
 ```
 
-### 2. Add Oracle JDBC Driver
+### 2. Add Oracle JDBC Driver (if not present already)
 
 Place:
 
