@@ -3,7 +3,6 @@
 echo ""
 echo "========================================="
 echo "     MEDCORE HOSPITAL MANAGEMENT"
-echo "           CONSOLE VERSION"
 echo "========================================="
 echo ""
 
@@ -30,7 +29,6 @@ echo "Oracle JDBC driver found"
 mkdir -p "$OUT_DIR"
 
 # Clean previous class files
-echo ""
 echo "Cleaning old class files..."
 rm -rf "$OUT_DIR"/*
 
@@ -50,22 +48,7 @@ javac -cp "$LIB_DIR/ojdbc11.jar" -d "$OUT_DIR" \
     2> "$ERROR_LOG"
 
 # Check compilation status
-if [ $? -eq 0 ]; then
-
-    # Remove empty compile log after successful build
-    rm -f "$ERROR_LOG"
-
-    echo "Compilation successful!"
-    echo ""
-
-    echo "========================================="
-    echo "      STARTING CONSOLE APPLICATION"
-    echo "========================================="
-    echo ""
-
-    java -cp "$OUT_DIR:$LIB_DIR/ojdbc11.jar" console.Main
-
-else
+if [ $? -ne 0 ]; then
     echo "Compilation failed!"
     echo ""
     echo "Error details:"
@@ -74,3 +57,42 @@ else
     echo "-----------------------------------------"
     exit 1
 fi
+
+# Remove empty compile log after successful build
+rm -f "$ERROR_LOG"
+echo "Compilation successful!"
+echo ""
+
+# Ask user which version to run
+echo "========================================="
+echo "     SELECT APPLICATION VERSION"
+echo "========================================="
+echo ""
+echo "1) Console Version"
+echo "2) GUI Version"
+echo ""
+echo -n "Enter your choice (1 or 2): "
+read choice
+
+echo ""
+
+case $choice in
+    1)
+        echo "========================================="
+        echo "      STARTING CONSOLE APPLICATION"
+        echo "========================================="
+        echo ""
+        java -cp "$OUT_DIR:$LIB_DIR/ojdbc11.jar" console.Main
+        ;;
+    2)
+        echo "========================================="
+        echo "        STARTING GUI APPLICATION"
+        echo "========================================="
+        echo ""
+        java -cp "$OUT_DIR:$LIB_DIR/ojdbc11.jar" gui.Main
+        ;;
+    *)
+        echo "Invalid choice! Please run the script again and select 1 or 2."
+        exit 1
+        ;;
+esac
