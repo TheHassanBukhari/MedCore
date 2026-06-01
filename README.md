@@ -41,8 +41,7 @@ MedCore-Hospital-Management/
 ├── sql/
 ├── lib/
 ├── screenshots/
-├── console.sh
-└── gui.sh
+└── run.sh
 ```
 
 ## Requirements
@@ -85,17 +84,12 @@ sql/create_tables.sql
 sql/sample_data.sql
 ```
 
-### 4. Run Console Version
+### 4. Run Program (Linux)
 
 ```bash
-./console.sh
+./run.sh
 ```
-
-### 5. Run GUI Version
-
-```bash
-./gui.sh
-```
+For windows make your own Batch File (.bat) from this bash file
 
 ## Screenshots
 
